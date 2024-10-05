@@ -16,11 +16,13 @@ private:
     QMediaPlayer *player;
 public:
     AudioManager(QObject *parent = nullptr);
-    Q_INVOKABLE void playMusic(const QString &filePath);
+    Q_INVOKABLE void playMusic();
 
-    void pause();
+    Q_INVOKABLE void pauseMusic();
 
     Q_INVOKABLE void stopMusic();
+
+    Q_INVOKABLE void openFolder(const QString &filePath);
 
     void seek(int position);
 

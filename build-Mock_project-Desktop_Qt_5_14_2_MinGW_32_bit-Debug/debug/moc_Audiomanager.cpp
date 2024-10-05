@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AudioManager_t {
-    QByteArrayData data[5];
-    char stringdata0[43];
+    QByteArrayData data[7];
+    char stringdata0[65];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,12 +35,14 @@ static const qt_meta_stringdata_AudioManager_t qt_meta_stringdata_AudioManager =
 QT_MOC_LITERAL(0, 0, 12), // "AudioManager"
 QT_MOC_LITERAL(1, 13, 9), // "playMusic"
 QT_MOC_LITERAL(2, 23, 0), // ""
-QT_MOC_LITERAL(3, 24, 8), // "filePath"
-QT_MOC_LITERAL(4, 33, 9) // "stopMusic"
+QT_MOC_LITERAL(3, 24, 10), // "pauseMusic"
+QT_MOC_LITERAL(4, 35, 9), // "stopMusic"
+QT_MOC_LITERAL(5, 45, 10), // "openFolder"
+QT_MOC_LITERAL(6, 56, 8) // "filePath"
 
     },
-    "AudioManager\0playMusic\0\0filePath\0"
-    "stopMusic"
+    "AudioManager\0playMusic\0\0pauseMusic\0"
+    "stopMusic\0openFolder\0filePath"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +52,7 @@ static const uint qt_meta_data_AudioManager[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,12 +60,16 @@ static const uint qt_meta_data_AudioManager[] = {
        0,       // signalCount
 
  // methods: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x02 /* Public */,
-       4,    0,   27,    2, 0x02 /* Public */,
+       1,    0,   34,    2, 0x02 /* Public */,
+       3,    0,   35,    2, 0x02 /* Public */,
+       4,    0,   36,    2, 0x02 /* Public */,
+       5,    1,   37,    2, 0x02 /* Public */,
 
  // methods: parameters
-    QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    6,
 
        0        // eod
 };
@@ -74,8 +80,10 @@ void AudioManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<AudioManager *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->playMusic((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 1: _t->stopMusic(); break;
+        case 0: _t->playMusic(); break;
+        case 1: _t->pauseMusic(); break;
+        case 2: _t->stopMusic(); break;
+        case 3: _t->openFolder((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -110,13 +118,13 @@ int AudioManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

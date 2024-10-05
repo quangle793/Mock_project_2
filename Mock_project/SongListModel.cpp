@@ -1,23 +1,23 @@
-#include "Songmodel.h"
+#include "SongListModel.h"
 
-SongModel::SongModel(QAbstractListModel *parent) : QAbstractListModel{parent}
+SongListModel::SongListModel(QAbstractListModel *parent) : QAbstractListModel{parent}
 {
 
 }
 
-void SongModel::addSong(const Song &song)
+void SongListModel::addSong(const Song &song)
 {
     beginInsertRows(QModelIndex(),rowCount(), rowCount());
     m_songs << song;
     endInsertRows();
 }
 
-int SongModel::rowCount(const QModelIndex &parent) const
+int SongListModel::rowCount(const QModelIndex &parent) const
 {
     return m_songs.count();
 }
 
-QVariant SongModel::data(const QModelIndex &index, int role) const
+QVariant SongListModel::data(const QModelIndex &index, int role) const
 {
     if(index.row() < 0 || index.row() >= m_songs.count())
     {
@@ -35,11 +35,10 @@ QVariant SongModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-QHash<int, QByteArray> SongModel::roleNames() const
+QHash<int, QByteArray> SongListModel::roleNames() const
 {
     QHash<int,QByteArray> roles;
     roles[titleRole] = "title" ;
     roles[artistRole] = "artist";
     return roles;
 }
-

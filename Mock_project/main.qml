@@ -1,6 +1,8 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import QtQuick.Dialogs 1.3
 import com.example.music 1.0
+import Qt.labs.folderlistmodel 2.1
 
 ApplicationWindow {
 
@@ -23,6 +25,48 @@ ApplicationWindow {
         color: "#ffffff"
 
         anchors.left: parent.left
+
+        property string currentSongTitle: ""
+        property string currentSongArtist: ""
+        Column {
+            anchors.centerIn: parent
+            // Hiển thị danh sách bài hát
+            ListView {
+                id: list
+                width: parent.width/2
+                height: parent.height
+                model: songListModel
+                onCurrentIndexChanged: {
+                    if (currentIndex !== -1) {
+                        // Cập nhật thông tin bài hát hiện tại
+                        currentSongTitle = songListModel.get(currentIndex).title;
+                        currentSongArtist = songListModel.get(currentIndex).artist;
+                        playMusic.source = songListModel.get(currentIndex).fileUrl;
+                    }
+                }
+                delegate: Component {
+                    Item {
+                        width: parent.width
+                        height: 40
+                        Column {
+                            // Hiển thị tiêu đề và nghệ sĩ
+                            Text { text: model.title }
+                            Text { text: model.artist }
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                list.currentIndex = index
+                            }
+                        }
+                    }
+                }
+                highlight: Rectangle {
+                    color: 'grey'
+                }
+                focus: true
+            }
+        }
 
     }
 
@@ -105,8 +149,7 @@ ApplicationWindow {
                         text: "Phát"
                         onClicked:
                         {
-                            var fileUrl = "C:/Users/PC/Music/TinhVeNoiDau-ThanhBuiTataYoung-2445341.mp3";  // Đường dẫn file nhạc
-                            player.playMusic(fileUrl);
+                            player.playMusic();
                         }
 
                     }
@@ -114,13 +157,13 @@ ApplicationWindow {
                     Button {
 
                         text: "Dừng"
-                         onClicked: player.stopMusic()
+                         onClicked: player.pauseMusic()
                     }
 
                     Button {
 
                         text: "Stop"
-
+                         onClicked: player.stopMusic()
 
                     }
 
@@ -206,6 +249,15 @@ ApplicationWindow {
 
                 color: "#b0b0b0"
 
+                FileDialog {
+                    id: fileDialog
+                    nameFilters: ["MP3 Files (*.mp3)"]
+                    onAccepted: {
+                        // Gọi hàm openFile từ C++
+                        player.openFolder(fileUrl.toString().replace("file:///", ""))
+                    }
+                }
+
 
                 Row {
 
@@ -235,6 +287,7 @@ ApplicationWindow {
                     Button {
 
                         text: "FOLDERS"
+                        onClicked: fileDialog.open()
                     }
 
                 }

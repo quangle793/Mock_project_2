@@ -18,7 +18,7 @@ SOURCES += \
         Audiomanager.cpp \
         Mucsicplayer.cpp \
         Song.cpp \
-        Songmodel.cpp \
+        SongListModel.cpp \
         UIController.cpp \
         main.cpp
 
@@ -39,5 +39,5 @@ HEADERS += \
     Audiomanager.h \
     Mucsicplayer.h \
     Song.h \
-    Songmodel.h \
+    SongListModel.h \
     UIController.h

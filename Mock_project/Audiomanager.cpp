@@ -5,7 +5,25 @@ AudioManager::AudioManager(QObject *parent): QObject(parent)
     player = new QMediaPlayer(this);
 }
 
-void AudioManager::playMusic(const QString &filePath)
+void AudioManager::playMusic()
+{
+    player->play();
+     qDebug() << "play";
+}
+
+void AudioManager::pauseMusic()
+{
+    player->pause();
+    qDebug() << "pause";
+}
+
+void AudioManager::stopMusic()
+{
+     player->stop();
+     qDebug() << "stop";
+}
+
+void AudioManager::openFolder(const QString &filePath)
 {
     if (filePath.isEmpty()) {
         qDebug() << "File path is empty";
@@ -15,16 +33,7 @@ void AudioManager::playMusic(const QString &filePath)
     player->setMedia(fileUrl);
     qDebug() << " fileUrl :" << fileUrl;
     player->play();
-}
-
-void AudioManager::pause()
-{
-
-}
-
-void AudioManager::stopMusic()
-{
-     player->stop();
+    qDebug() << "filePath" << filePath ;
 }
 
 void AudioManager::seek(int position)

@@ -1,5 +1,5 @@
-#ifndef SONGMODEL_H
-#define SONGMODEL_H
+#ifndef SONGLISTMODEL_H
+#define SONGLISTMODEL_H
 
 #include <QObject>
 #include <QAbstractListModel>
@@ -8,11 +8,11 @@
 #include <QMediaPlayer>
 #include "Audiomanager.h"
 
-class SongModel : public QAbstractListModel
+class SongListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    SongModel(QAbstractListModel *parent = nullptr);
+    SongListModel(QAbstractListModel *parent = nullptr);
 
     enum SongRoles {
             titleRole = Qt::UserRole + 1,
@@ -30,7 +30,6 @@ public:
 
 private :
     QList<Song>m_songs;
-
 };
 
-#endif // SONGMODEL_H
+#endif // SONGLISTMODEL_H
