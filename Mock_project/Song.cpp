@@ -24,3 +24,5 @@ QString Song::getFilePath()
 {
     return filePath;
 }
+
+

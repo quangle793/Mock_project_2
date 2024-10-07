@@ -21,25 +21,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_SongModel_t {
+struct qt_meta_stringdata_Songmodel_t {
     QByteArrayData data[1];
     char stringdata0[10];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_SongModel_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Songmodel_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_SongModel_t qt_meta_stringdata_SongModel = {
+static const qt_meta_stringdata_Songmodel_t qt_meta_stringdata_Songmodel = {
     {
-QT_MOC_LITERAL(0, 0, 9) // "SongModel"
+QT_MOC_LITERAL(0, 0, 9) // "Songmodel"
 
     },
-    "SongModel"
+    "Songmodel"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_SongModel[] = {
+static const uint qt_meta_data_Songmodel[] = {
 
  // content:
        8,       // revision
@@ -55,7 +55,7 @@ static const uint qt_meta_data_SongModel[] = {
        0        // eod
 };
 
-void SongModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Songmodel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -63,30 +63,30 @@ void SongModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject SongModel::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject Songmodel::staticMetaObject = { {
     QMetaObject::SuperData::link<QAbstractListModel::staticMetaObject>(),
-    qt_meta_stringdata_SongModel.data,
-    qt_meta_data_SongModel,
+    qt_meta_stringdata_Songmodel.data,
+    qt_meta_data_Songmodel,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *SongModel::metaObject() const
+const QMetaObject *Songmodel::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *SongModel::qt_metacast(const char *_clname)
+void *Songmodel::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_SongModel.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_Songmodel.stringdata0))
         return static_cast<void*>(this);
     return QAbstractListModel::qt_metacast(_clname);
 }
 
-int SongModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Songmodel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QAbstractListModel::qt_metacall(_c, _id, _a);
     return _id;

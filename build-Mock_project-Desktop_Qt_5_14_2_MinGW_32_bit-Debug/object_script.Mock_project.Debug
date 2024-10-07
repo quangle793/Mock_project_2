@@ -1,11 +1,10 @@
 debug/Audiomanager.o
-debug/Mucsicplayer.o
+debug/Musicplayer.o
 debug/Song.o
-debug/SongListModel.o
+debug/Songmodel.o
 debug/UIController.o
 debug/main.o
 debug/qrc_qml.o
 debug/moc_Audiomanager.o
-debug/moc_Mucsicplayer.o
-debug/moc_SongListModel.o
+debug/moc_Songmodel.o
 debug/moc_UIController.o

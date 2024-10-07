@@ -24,3 +24,8 @@ void UIController::updateVolume(int volume)
 {
 
 }
+
+void UIController::onFilePathReceived(QString value)
+{
+     qDebug() << "Received value:" << value;
+}

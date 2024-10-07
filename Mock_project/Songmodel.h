@@ -3,33 +3,32 @@
 
 #include <QObject>
 #include <QAbstractListModel>
-#include <Song.h>
+#include <QString>
+#include <QDebug>
 #include <QFileInfo>
-#include <QMediaPlayer>
-#include "Audiomanager.h"
 
-class SongModel : public QAbstractListModel
+class Songmodel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    SongModel(QAbstractListModel *parent = nullptr);
-
+    explicit Songmodel(QObject *parent = nullptr);
     enum SongRoles {
-            titleRole = Qt::UserRole + 1,
-            artistRole
-        };
+        FilePathRole = Qt::UserRole + 1
+    };
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    void addSong(const Song& song);
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    int rowCount(const QModelIndex &parent = QModelIndex())const override ;
+    QHash<int, QByteArray> roleNames() const override;
+    void addSong(const QString &filePath);
 
-    QVariant data(const QModelIndex &index, int role) const override;
-
-    QHash<int,QByteArray> roleNames() const override;
+    QString getSongPath(int index) const;
 
 
-private :
-    QList<Song>m_songs;
+signals:
+
+private:
+    QList<QString> m_songs;
 
 };
 

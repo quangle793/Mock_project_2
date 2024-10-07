@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <Song.h>
+#include <QString>
 
 class UIController : public QObject
 {
@@ -17,6 +18,8 @@ public:
     void updatPlayPause(bool inPlaying);
 
     void updateVolume(int volume);
+public slots:
+    void onFilePathReceived(QString value);
 };
 
 #endif // UICONTROLLER_H

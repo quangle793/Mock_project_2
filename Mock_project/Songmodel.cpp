@@ -1,45 +1,61 @@
 #include "Songmodel.h"
 
-SongModel::SongModel(QAbstractListModel *parent) : QAbstractListModel{parent}
+Songmodel::Songmodel(QObject *parent)
+    : QAbstractListModel{parent}
 {
 
 }
 
-void SongModel::addSong(const Song &song)
+int Songmodel::rowCount(const QModelIndex &parent) const
 {
-    beginInsertRows(QModelIndex(),rowCount(), rowCount());
-    m_songs << song;
-    endInsertRows();
-}
-
-int SongModel::rowCount(const QModelIndex &parent) const
-{
+    Q_UNUSED(parent);
     return m_songs.count();
 }
 
-QVariant SongModel::data(const QModelIndex &index, int role) const
+QVariant Songmodel::data(const QModelIndex &index, int role) const
 {
-    if(index.row() < 0 || index.row() >= m_songs.count())
-    {
+    if (!index.isValid() || index.row() >= m_songs.size())
         return QVariant();
-    }
-    const Song& song = m_songs[index.row()];
-    if(role == titleRole)
-    {
-        return song.getTitle();
-    }
-    else if(role == artistRole)
-    {
-        return song.getArtist();
-    }
+
+    const QString &filePath = m_songs[index.row()];
+
+    if (role == FilePathRole)
+        return filePath;
+
     return QVariant();
 }
 
-QHash<int, QByteArray> SongModel::roleNames() const
+QHash<int, QByteArray> Songmodel::roleNames() const
 {
-    QHash<int,QByteArray> roles;
-    roles[titleRole] = "title" ;
-    roles[artistRole] = "artist";
+    QHash<int, QByteArray> roles;
+    roles[FilePathRole] = "filePath";
     return roles;
 }
 
+void Songmodel::addSong(const QString &filePath)
+{
+    // Lấy tên file từ đường dẫn
+//	QFileInfo fileInfo(filePath);
+//	QString baseName = fileInfo.completeBaseName(); // Lấy tên file mà không có phần mở rộng
+
+//	// Debug tên file đã được xử lý
+//	qDebug() << "Processed file name: " << baseName;
+
+    if (m_songs.contains(filePath)) {
+        qDebug() << "Song already exists: " << filePath;
+        return;  // Nếu đã tồn tại, không thêm vào
+    }
+
+    // Nếu chưa tồn tại, thêm vào danh sách
+    beginInsertRows(QModelIndex(), m_songs.size(), m_songs.size());
+    m_songs.append(filePath);
+    endInsertRows();
+}
+
+QString Songmodel::getSongPath(int index) const
+{
+    if (index >= 0 && index < m_songs.size()) {
+            return m_songs.at(index);
+        }
+        return QString();
+}
