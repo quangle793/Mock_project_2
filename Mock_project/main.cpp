@@ -14,6 +14,8 @@ int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
     QCoreApplication::setOrganizationName("YourOrganizationName");
     QCoreApplication::setOrganizationDomain("yourorganizationdomain.com");
+
+
 //	AudioManager audiomanager;
 //	UIController uiController;
 

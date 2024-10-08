@@ -1,10 +1,9 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Dialogs 1.3
-//import com.example.music 1.0
 import Qt.labs.folderlistmodel 2.1
-//import com.example.songmodel 1.0
 import QtMultimedia 5.14
+
 
 ApplicationWindow {
     id : root
@@ -16,9 +15,18 @@ ApplicationWindow {
     height: 1080
 
     property string selectedSongName: ""
+    signal sendFilePath(string filePath)
 
-    property int songDuration: 0  // Thời lượng bài hát
-    property int currentTime: 0   // Thời gian phát hiện tại
+
+
+    AlbumPopup {
+        id: albumPopup // Đặt id để mở dialog từ đây
+    }
+
+    SelectPopup
+    {
+        id : selectPopup
+    }
 
     // Mục Album (Bên trái)
 
@@ -36,6 +44,7 @@ ApplicationWindow {
 
         ListView {
             id : listSong
+
             anchors.fill: parent
             model: songModel
             delegate: Rectangle {
@@ -52,6 +61,34 @@ ApplicationWindow {
                     anchors.fill: parent
                     onClicked: {
                         root.selectedSongName = textSong.text;
+                        audioManager.openFolder(model.filePath);
+                        console.log("click")
+                    }
+                }
+                Rectangle
+                {
+                    id : luachon
+                    width: 50
+                    height: 50
+                    color: "#f0f0f0"
+                    anchors.right: parent.right
+
+                    Text {
+                        id: name
+                        text: qsTr("⋮")
+                        anchors.centerIn: parent
+                        font.pixelSize: 20
+                    }
+
+                    MouseArea
+                    {
+                        anchors.fill: parent
+                        onClicked:
+                        {
+                            selectPopup.open()
+                            console.log("filePath bai hat : ",model.filePath)
+                            selectPopup.setFilePath(model.filePath)
+                        }
                     }
                 }
             }
@@ -77,8 +114,6 @@ ApplicationWindow {
 
             spacing: 20
 
-            // Tên bài hát và nghệ sĩ
-
             Rectangle {
 
                 width: parent.width
@@ -100,65 +135,41 @@ ApplicationWindow {
             }
 
             Rectangle {
+                id: mainRect
                 width: parent.width
-                height: 10
+                height: 50
+                property int songDuration: 0
+                property int currentTime: 0
 
+                Row {
+                    spacing: 10
+                    anchors.fill: parent
 
-                MediaPlayer {
-                    id: player
-                    source: audioManager.songUI  // Đảm bảo rằng audioManager.songUI chứa đường dẫn bài hát
-
-                    onDurationChanged: {
-                        songDuration = Math.floor(duration / 1000);  // Đổi từ milliseconds sang seconds
-                        console.log("Duration:", songDuration);      // Kiểm tra thời lượng bài hát
-                    }
-
-                    onPositionChanged: {
-                        currentTime = Math.floor(position / 1000);  // Đổi từ milliseconds sang seconds
-                        console.log("Current Time:", currentTime);  // Kiểm tra thời gian hiện tại
-                    }
-                }
-
-                Column {
-                    width: parent.width
-                    padding: 20
-
-                    // Hiển thị thời gian hiện tại và tổng thời gian của bài hát
-                    Row {
-                        spacing: 10
-                        Text {
-                            text: Qt.formatTime(currentTime * 1000, "mm:ss")  // Hiển thị thời gian hiện tại
-                        }
-
-                        Text {
-                            text: "/"
-                        }
-
-                        Text {
-                            text: Qt.formatTime(songDuration * 1000, "mm:ss")  // Hiển thị tổng thời gian bài hát
-                        }
-                    }
-
-                    // Thanh tiến trình
+                    // Slider
                     Slider {
                         id: progressBar
                         width: parent.width * 0.9
+                        height: parent.height
                         from: 0
-                        to: songDuration  // Đặt giới hạn thanh tiến trình là thời lượng bài hát
-                        value: currentTime  // Giá trị hiện tại của thanh tiến trình
+                        to: audioManager.durationSong
+                        value: audioManager.currentTime
 
                         onValueChanged: {
                             if (pressed) {  // Khi kéo thanh tiến trình
-                                player.seek(value * 1000);  // Đổi lại sang milliseconds
+                                player.seek(value * 1000);
                                 console.log("Seeking to:", value);
                             }
                         }
                     }
+
+                    Text {
+                        text: audioManager.durationSong > 0 ? audioManager.handleDuration(audioManager.remainingTime) : ""
+                        verticalAlignment: Text.AlignVCenter
+                        width: parent.width * 0.2
+                        anchors.verticalCenter: progressBar.verticalCenter
+                    }
                 }
             }
-
-
-            // Các nút điều khiển (Phát/Tạm dừng, Bỏ qua)
 
             Rectangle {
 
@@ -224,14 +235,38 @@ ApplicationWindow {
 
                 color: "#e0e0e0"
 
-                Text {
+                Row {
+                    spacing: 10
+                    anchors.fill: parent
 
-                    text: "Tốc độ bit: 320kbps - Định dạng: MP3"
+                    Rectangle
+                    {
+                        width: 70
+                        height: 70
+                        border.color: "blue"
+                        Text {
+                            id: loaMusic
+                            text: qsTr("LOA")
+                            anchors.centerIn: parent
+                        }
+                        anchors.verticalCenter: volumeMusic.verticalCenter
+                    }
 
-                    anchors.centerIn: parent
+                    // Slider
+                    Slider {
+                        id: volumeMusic
+                        width: parent.width * 0.9
+                        height: parent.height
+                        from: 0
+                        to: 1  // Âm lượng từ 0.0 đến 1.0
+                        stepSize: 0.01  // Đặt bước nhảy
+                        value: audioManager.volume // Lấy giá trị âm lượng từ AudioManager
 
-                    font.pixelSize: 32
-
+                        onValueChanged: {
+                            audioManager.setVolume(value)  // Gọi phương thức để cập nhật âm lượng
+                            console.log("Volume set to:", value);
+                        }
+                    }
                 }
 
             }
@@ -322,9 +357,13 @@ ApplicationWindow {
 
                     }
 
+
                     Button {
 
                         text: "ALBUMS"
+                        onClicked: {
+                                    albumPopup.open(); // Mở dialog khi nút được nhấp
+                                }
 
                     }
                     Button {

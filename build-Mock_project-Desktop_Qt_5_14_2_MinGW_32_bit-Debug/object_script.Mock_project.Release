@@ -1,10 +1,11 @@
 release/Audiomanager.o
-release/Musicplayer.o
+release/MusicFavorite.o
 release/Song.o
 release/Songmodel.o
 release/UIController.o
 release/main.o
 release/qrc_qml.o
 release/moc_Audiomanager.o
+release/moc_MusicFavorite.o
 release/moc_Songmodel.o
 release/moc_UIController.o

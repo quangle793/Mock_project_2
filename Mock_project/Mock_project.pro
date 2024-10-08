@@ -9,6 +9,7 @@ QT += quick \
 
 SOURCES += \
         Audiomanager.cpp \
+    MusicFavorite.cpp \
         Song.cpp \
                 Songmodel.cpp \
         UIController.cpp \
@@ -29,6 +30,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
         Audiomanager.h \
+        MusicFavorite.h \
         Song.h \
         Songmodel.h \
         UIController.h
+
+DISTFILES +=

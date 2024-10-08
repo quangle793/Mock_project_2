@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AudioManager_t {
-    QByteArrayData data[18];
-    char stringdata0[199];
+    QByteArrayData data[31];
+    char stringdata0[389];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,26 +38,43 @@ QT_MOC_LITERAL(2, 26, 0), // ""
 QT_MOC_LITERAL(3, 27, 8), // "filePath"
 QT_MOC_LITERAL(4, 36, 13), // "songUIChanged"
 QT_MOC_LITERAL(5, 50, 6), // "songUI"
-QT_MOC_LITERAL(6, 57, 9), // "setSongUI"
-QT_MOC_LITERAL(7, 67, 17), // "onDurationChanged"
-QT_MOC_LITERAL(8, 85, 8), // "duration"
-QT_MOC_LITERAL(9, 94, 9), // "playMusic"
-QT_MOC_LITERAL(10, 104, 10), // "pauseMusic"
-QT_MOC_LITERAL(11, 115, 9), // "stopMusic"
-QT_MOC_LITERAL(12, 125, 9), // "nextMusic"
-QT_MOC_LITERAL(13, 135, 13), // "previousMusic"
-QT_MOC_LITERAL(14, 149, 10), // "openFolder"
-QT_MOC_LITERAL(15, 160, 14), // "addSongToModel"
-QT_MOC_LITERAL(16, 175, 11), // "getDuration"
-QT_MOC_LITERAL(17, 187, 11) // "getFileName"
+QT_MOC_LITERAL(6, 57, 15), // "durationChanged"
+QT_MOC_LITERAL(7, 73, 8), // "duration"
+QT_MOC_LITERAL(8, 82, 19), // "durationSongChanged"
+QT_MOC_LITERAL(9, 102, 12), // "durationSong"
+QT_MOC_LITERAL(10, 115, 18), // "currentTimeChanged"
+QT_MOC_LITERAL(11, 134, 20), // "remainingTimeChanged"
+QT_MOC_LITERAL(12, 155, 9), // "setSongUI"
+QT_MOC_LITERAL(13, 165, 17), // "onDurationChanged"
+QT_MOC_LITERAL(14, 183, 15), // "setDurationSong"
+QT_MOC_LITERAL(15, 199, 17), // "onPositionChanged"
+QT_MOC_LITERAL(16, 217, 8), // "position"
+QT_MOC_LITERAL(17, 226, 9), // "playMusic"
+QT_MOC_LITERAL(18, 236, 10), // "pauseMusic"
+QT_MOC_LITERAL(19, 247, 9), // "stopMusic"
+QT_MOC_LITERAL(20, 257, 9), // "nextMusic"
+QT_MOC_LITERAL(21, 267, 13), // "previousMusic"
+QT_MOC_LITERAL(22, 281, 10), // "openFolder"
+QT_MOC_LITERAL(23, 292, 14), // "addSongToModel"
+QT_MOC_LITERAL(24, 307, 11), // "getDuration"
+QT_MOC_LITERAL(25, 319, 14), // "handleDuration"
+QT_MOC_LITERAL(26, 334, 11), // "getFileName"
+QT_MOC_LITERAL(27, 346, 9), // "setVolume"
+QT_MOC_LITERAL(28, 356, 6), // "volume"
+QT_MOC_LITERAL(29, 363, 11), // "currentTime"
+QT_MOC_LITERAL(30, 375, 13) // "remainingTime"
 
     },
     "AudioManager\0filePathSent\0\0filePath\0"
-    "songUIChanged\0songUI\0setSongUI\0"
-    "onDurationChanged\0duration\0playMusic\0"
+    "songUIChanged\0songUI\0durationChanged\0"
+    "duration\0durationSongChanged\0durationSong\0"
+    "currentTimeChanged\0remainingTimeChanged\0"
+    "setSongUI\0onDurationChanged\0setDurationSong\0"
+    "onPositionChanged\0position\0playMusic\0"
     "pauseMusic\0stopMusic\0nextMusic\0"
     "previousMusic\0openFolder\0addSongToModel\0"
-    "getDuration\0getFileName"
+    "getDuration\0handleDuration\0getFileName\0"
+    "setVolume\0volume\0currentTime\0remainingTime"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,39 +84,53 @@ static const uint qt_meta_data_AudioManager[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
-       1,  106, // properties
+      21,   14, // methods
+       4,  166, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   79,    2, 0x06 /* Public */,
-       4,    1,   82,    2, 0x06 /* Public */,
+       1,    1,  119,    2, 0x06 /* Public */,
+       4,    1,  122,    2, 0x06 /* Public */,
+       6,    1,  125,    2, 0x06 /* Public */,
+       8,    1,  128,    2, 0x06 /* Public */,
+      10,    0,  131,    2, 0x06 /* Public */,
+      11,    0,  132,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   85,    2, 0x0a /* Public */,
-       7,    1,   88,    2, 0x0a /* Public */,
+      12,    1,  133,    2, 0x0a /* Public */,
+      13,    1,  136,    2, 0x0a /* Public */,
+      14,    1,  139,    2, 0x0a /* Public */,
+      15,    1,  142,    2, 0x0a /* Public */,
 
  // methods: name, argc, parameters, tag, flags
-       9,    0,   91,    2, 0x02 /* Public */,
-      10,    0,   92,    2, 0x02 /* Public */,
-      11,    0,   93,    2, 0x02 /* Public */,
-      12,    0,   94,    2, 0x02 /* Public */,
-      13,    0,   95,    2, 0x02 /* Public */,
-      14,    1,   96,    2, 0x02 /* Public */,
-      15,    1,   99,    2, 0x02 /* Public */,
-      16,    0,  102,    2, 0x02 /* Public */,
-      17,    1,  103,    2, 0x02 /* Public */,
+      17,    0,  145,    2, 0x02 /* Public */,
+      18,    0,  146,    2, 0x02 /* Public */,
+      19,    0,  147,    2, 0x02 /* Public */,
+      20,    0,  148,    2, 0x02 /* Public */,
+      21,    0,  149,    2, 0x02 /* Public */,
+      22,    1,  150,    2, 0x02 /* Public */,
+      23,    1,  153,    2, 0x02 /* Public */,
+      24,    0,  156,    2, 0x02 /* Public */,
+      25,    1,  157,    2, 0x02 /* Public */,
+      26,    1,  160,    2, 0x02 /* Public */,
+      27,    1,  163,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    5,
+    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    9,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    5,
-    QMetaType::Void, QMetaType::LongLong,    8,
+    QMetaType::Void, QMetaType::LongLong,    7,
+    QMetaType::Void, QMetaType::Int,    9,
+    QMetaType::Void, QMetaType::LongLong,   16,
 
  // methods: parameters
     QMetaType::Void,
@@ -110,13 +141,21 @@ static const uint qt_meta_data_AudioManager[] = {
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Int,
+    QMetaType::QString, QMetaType::Int,    7,
     QMetaType::QString, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QReal,   28,
 
  // properties: name, type, flags
        5, QMetaType::QString, 0x00495103,
+       9, QMetaType::Int, 0x00495103,
+      29, QMetaType::Int, 0x00495001,
+      30, QMetaType::Int, 0x00495001,
 
  // properties: notify_signal_id
        1,
+       3,
+       4,
+       5,
 
        0        // eod
 };
@@ -129,19 +168,28 @@ void AudioManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: _t->filePathSent((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->songUIChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 2: _t->setSongUI((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: _t->onDurationChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
-        case 4: _t->playMusic(); break;
-        case 5: _t->pauseMusic(); break;
-        case 6: _t->stopMusic(); break;
-        case 7: _t->nextMusic(); break;
-        case 8: _t->previousMusic(); break;
-        case 9: _t->openFolder((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 10: _t->addSongToModel((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 11: { int _r = _t->getDuration();
+        case 2: _t->durationChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->durationSongChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->currentTimeChanged(); break;
+        case 5: _t->remainingTimeChanged(); break;
+        case 6: _t->setSongUI((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 7: _t->onDurationChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
+        case 8: _t->setDurationSong((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->onPositionChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
+        case 10: _t->playMusic(); break;
+        case 11: _t->pauseMusic(); break;
+        case 12: _t->stopMusic(); break;
+        case 13: _t->nextMusic(); break;
+        case 14: _t->previousMusic(); break;
+        case 15: _t->openFolder((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 16: _t->addSongToModel((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 17: { int _r = _t->getDuration();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 12: { QString _r = _t->getFileName((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 18: { QString _r = _t->handleDuration((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 19: { QString _r = _t->getFileName((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 20: _t->setVolume((*reinterpret_cast< qreal(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -160,6 +208,34 @@ void AudioManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
                 return;
             }
         }
+        {
+            using _t = void (AudioManager::*)(int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AudioManager::durationChanged)) {
+                *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (AudioManager::*)(int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AudioManager::durationSongChanged)) {
+                *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (AudioManager::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AudioManager::currentTimeChanged)) {
+                *result = 4;
+                return;
+            }
+        }
+        {
+            using _t = void (AudioManager::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AudioManager::remainingTimeChanged)) {
+                *result = 5;
+                return;
+            }
+        }
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
@@ -168,6 +244,9 @@ void AudioManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast< QString*>(_v) = _t->songUI(); break;
+        case 1: *reinterpret_cast< int*>(_v) = _t->durationSong(); break;
+        case 2: *reinterpret_cast< int*>(_v) = _t->currentTime(); break;
+        case 3: *reinterpret_cast< int*>(_v) = _t->remainingTime(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -176,6 +255,7 @@ void AudioManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         void *_v = _a[0];
         switch (_id) {
         case 0: _t->setSongUI(*reinterpret_cast< QString*>(_v)); break;
+        case 1: _t->setDurationSong(*reinterpret_cast< int*>(_v)); break;
         default: break;
         }
     } else if (_c == QMetaObject::ResetProperty) {
@@ -212,29 +292,29 @@ int AudioManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 21)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 21;
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 1;
+        _id -= 4;
     }
 #endif // QT_NO_PROPERTIES
     return _id;
@@ -252,6 +332,32 @@ void AudioManager::songUIChanged(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void AudioManager::durationChanged(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void AudioManager::durationSongChanged(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void AudioManager::currentTimeChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void AudioManager::remainingTimeChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

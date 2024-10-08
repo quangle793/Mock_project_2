@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>AlbumPopup.qml</file>
+        <file>ListFavoritePopup.qml</file>
+        <file>SelectPopup.qml</file>
     </qresource>
 </RCC>
